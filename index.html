@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>eBook Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <div class="max-w-5xl mx-auto py-12 px-4">
+    <h1 class="text-4xl font-bold text-center mb-10">📚 Booklyn Premium eBooks Store</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- eBook 1 -->
+      <div class="bg-white shadow-lg rounded-lg p-6">
+        <a href="https://ibb.co/QvpPwZYp" target="_blank">
+          <img src="https://i.ibb.co/GQnWSXCn/Chat-GPT-Image-Aug-2-2025-01-39-45-PM.png" alt="eBook 1" class="w-full h-auto rounded shadow-md">
+        </a>
+        <h2 class="text-2xl font-semibold mb-2">Mastering your money habits</h2>
+        <p class="mb-3 text-gray-600">A powerful step-by-step system that teaches how to manage money, invest smartly, and retire early.</p>
+        <p class="text-lg font-bold mb-2">₦4,300</p>
+        <div class="flex space-x-3">
+          <button onclick="openModal(4300, 'weekly')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Buy Now</button>
+          <button onclick="showDetails('details1')" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Read More</button>
+        </div>
+        <p class="mt-4 text-sm text-gray-500">Your ebook will be sent to your email upon payment confirmation. If not received, contact: <a href="mailto:ojewoyegoddey.ogd@gmail.com" class="underline">ojewoyegoddey.ogd@gmail.com</a></p>
+      </div>
+
+      <!-- eBook 2 -->
+      <div class="bg-white shadow-lg rounded-lg p-6">
+        <a href="https://ibb.co/DP87QVqc" target="_blank">
+          <img src="https://i.ibb.co/HLxrqFJw/Chat-GPT-Image-Aug-2-2025-01-42-33-PM.png" alt="eBook 2" class="w-full h-auto rounded shadow-md">
+        </a>
+        <h2 class="text-2xl font-semibold mb-2">The Ultimate Guide to Financial Freedom</h2>
+        <p class="mb-3 text-gray-600">Learn proven methods to start and grow a successful online business using local tools and strategies.</p>
+        <p class="text-lg font-bold mb-2">₦10,300</p>
+        <div class="flex space-x-3">
+          <button onclick="openModal(10300, 'monthly')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Buy Now</button>
+          <button onclick="showDetails('details2')" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Read More</button>
+        </div>
+        <p class="mt-4 text-sm text-gray-500">Your ebook will be sent to your email upon payment confirmation. If not received, contact: <a href="mailto:ojewoyegoddey.ogd@gmail.com" class="underline">ojewoyegoddey.ogd@gmail.com</a></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Buy Modal -->
+  <div id="buyModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
+      <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
+      <h2 class="text-xl font-semibold mb-4">Enter Your Details</h2>
+      <form id="purchaseForm">
+        <input type="hidden" id="amount">
+        <input type="hidden" id="plan">
+
+        <div class="mb-4">
+          <label class="block mb-1 text-sm font-medium">Name</label>
+          <input type="text" id="name" required class="w-full px-3 py-2 border border-gray-300 rounded">
+        </div>
+        <div class="mb-4">
+          <label class="block mb-1 text-sm font-medium">Email</label>
+          <input type="email" id="email" required class="w-full px-3 py-2 border border-gray-300 rounded">
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Proceed to Checkout</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Read More Modal 1 -->
+  <div id="details1" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg relative">
+      <button onclick="hideDetails('details1')" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
+      <h3 class="text-xl font-semibold mb-4">About The Ultimate Guide to Financial Freedom</h3>
+      <p class="text-gray-700 text-sm leading-relaxed">
+        This comprehensive ebook will walk you through the foundations of building real wealth. Learn how to budget effectively, save consistently, invest wisely, and build passive income streams. Whether you're starting from zero or looking to optimize your finances, this guide has everything you need. <br><br>
+        You'll also find tools, apps, and Nigerian-specific strategies to grow your savings and multiply income. A must-read for young professionals, entrepreneurs, and anyone tired of living paycheck-to-paycheck.
+      </p>
+    </div>
+  </div>
+
+  <!-- Read More Modal 2 -->
+  <div id="details2" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg relative">
+      <button onclick="hideDetails('details2')" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
+      <h3 class="text-xl font-semibold mb-4">About Mastering Online Business in Nigeria</h3>
+      <p class="text-gray-700 text-sm leading-relaxed">
+        Discover the blueprint to launch and scale a profitable online business in Nigeria using tools you already have. This ebook reveals tested techniques for leveraging social media, WhatsApp, e-commerce, affiliate marketing, and digital products to generate income online. <br><br>
+        Learn how to find winning niches, set up payment gateways, and attract your first 1,000 paying customers. Includes interviews with successful Nigerian online entrepreneurs and a list of useful platforms you can start using today.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function openModal(amount, plan) {
+      document.getElementById('amount').value = amount;
+      document.getElementById('plan').value = plan;
+      document.getElementById('buyModal').classList.remove('hidden');
+      document.getElementById('buyModal').classList.add('flex');
+    }
+
+    function closeModal() {
+      document.getElementById('buyModal').classList.add('hidden');
+      document.getElementById('buyModal').classList.remove('flex');
+    }
+
+    function showDetails(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.getElementById(id).classList.add('flex');
+    }
+
+    function hideDetails(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.getElementById(id).classList.remove('flex');
+    }
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
