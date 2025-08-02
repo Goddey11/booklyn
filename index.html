@@ -1,9 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>eBook Store</title>
+  <meta charset="UTF-8" />
+  <title>eBook Store with Paystack Integration</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <style>
+    /* Modal styling */
+    #buyModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none; /* hidden by default */
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #buyModal.flex {
+      display: flex;
+    }
+    #buyModal .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 0 10px #0003;
+      position: relative;
+    }
+    #buyModal .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: #555;
+    }
+    #buyModal .close-btn:hover {
+      color: #000;
+    }
+  </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
 
@@ -11,7 +49,6 @@
     <h1 class="text-4xl font-bold text-center mb-10">📚 Booklyn Premium eBooks Store</h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      
       <!-- eBook 1 -->
       <div class="bg-white shadow-lg rounded-lg p-6">
         <a href="https://ibb.co/QvpPwZYp" target="_blank">
@@ -41,33 +78,32 @@
         </div>
         <p class="mt-4 text-sm text-gray-500">Your ebook will be sent to your email upon payment confirmation. If not received, contact: <a href="mailto:ojewoyegoddey.ogd@gmail.com" class="underline">ojewoyegoddey.ogd@gmail.com</a></p>
       </div>
-
     </div>
   </div>
 
   <!-- Buy Modal -->
   <div id="buyModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
-      <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
+    <div class="modal-content">
+      <button id="closeModalBtn" class="close-btn" aria-label="Close modal">&times;</button>
       <h2 class="text-xl font-semibold mb-4">Enter Your Details</h2>
       <form id="purchaseForm">
-        <input type="hidden" id="amount">
-        <input type="hidden" id="plan">
+        <input type="hidden" id="amount" name="amount">
+        <input type="hidden" id="plan" name="plan">
 
         <div class="mb-4">
-          <label class="block mb-1 text-sm font-medium">Name</label>
-          <input type="text" id="name" required class="w-full px-3 py-2 border border-gray-300 rounded">
+          <label for="name" class="block mb-1 text-sm font-medium">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required class="w-full px-3 py-2 border border-gray-300 rounded">
         </div>
         <div class="mb-4">
-          <label class="block mb-1 text-sm font-medium">Email</label>
-          <input type="email" id="email" required class="w-full px-3 py-2 border border-gray-300 rounded">
+          <label for="email" class="block mb-1 text-sm font-medium">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" required class="w-full px-3 py-2 border border-gray-300 rounded">
         </div>
         <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Proceed to Checkout</button>
       </form>
     </div>
   </div>
 
-  <!-- Read More Modal 1 -->
+  <!-- Read More Modals (unchanged) -->
   <div id="details1" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg relative">
       <button onclick="hideDetails('details1')" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
@@ -79,7 +115,6 @@
     </div>
   </div>
 
-  <!-- Read More Modal 2 -->
   <div id="details2" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg relative">
       <button onclick="hideDetails('details2')" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
@@ -91,30 +126,84 @@
     </div>
   </div>
 
-  <script>
-    function openModal(amount, plan) {
-      document.getElementById('amount').value = amount;
-      document.getElementById('plan').value = plan;
-      document.getElementById('buyModal').classList.remove('hidden');
-      document.getElementById('buyModal').classList.add('flex');
-    }
+<script>
+  // Modal open/close functions
+  function openModal(amount, plan) {
+    document.getElementById('amount').value = amount;
+    document.getElementById('plan').value = plan;
+    document.getElementById('buyModal').classList.remove('hidden');
+    document.getElementById('buyModal').classList.add('flex');
+  }
 
-    function closeModal() {
-      document.getElementById('buyModal').classList.add('hidden');
-      document.getElementById('buyModal').classList.remove('flex');
-    }
+  function closeModal() {
+    document.getElementById('buyModal').classList.add('hidden');
+    document.getElementById('buyModal').classList.remove('flex');
+  }
 
-    function showDetails(id) {
-      document.getElementById(id).classList.remove('hidden');
-      document.getElementById(id).classList.add('flex');
-    }
+  function showDetails(id) {
+    document.getElementById(id).classList.remove('hidden');
+    document.getElementById(id).classList.add('flex');
+  }
 
-    function hideDetails(id) {
-      document.getElementById(id).classList.add('hidden');
-      document.getElementById(id).classList.remove('flex');
-    }
-  </script>
+  function hideDetails(id) {
+    document.getElementById(id).classList.add('hidden');
+    document.getElementById(id).classList.remove('flex');
+  }
 
-  <script src="script.js"></script>
+  // Close modal btn event
+  document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+
+  // Paystack Integration
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("purchaseForm");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const amount = parseFloat(document.getElementById("amount").value);
+      const plan = document.getElementById("plan").value;
+
+      if (!name || !email || !amount || !plan) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      closeModal();
+
+      const [firstName, ...lastParts] = name.split(' ');
+      const lastName = lastParts.join(' ') || '';
+
+      var handler = PaystackPop.setup({
+        key: 'pk_live_cfc092b46e1027b8c607e6dd665420e29ceb157b', // Replace with your public key
+        email: email,
+        amount: amount * 100, // convert to kobo
+        currency: 'NGN',
+        firstname: firstName,
+        lastname: lastName,
+        metadata: {
+          custom_fields: [
+            {
+              display_name: "Plan",
+              variable_name: "plan",
+              value: plan
+            }
+          ]
+        },
+        callback: function(response) {
+          alert('Payment successful! Reference: ' + response.reference);
+          // You can handle server-side verification here if needed
+        },
+        onClose: function() {
+          alert('Payment cancelled.');
+        }
+      });
+
+      handler.openIframe();
+    });
+  });
+</script>
+
 </body>
 </html>
