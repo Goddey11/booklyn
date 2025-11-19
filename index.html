@@ -78,6 +78,22 @@
         </div>
         <p class="mt-4 text-sm text-gray-500">Your ebook will be sent to your email upon payment confirmation. If not received, contact: <a href="mailto:ojewoyegoddey.ogd@gmail.com" class="underline">ojewoyegoddey.ogd@gmail.com</a></p>
       </div>
+
+      <!-- eBook 3 (NEW - ₦50,000) -->
+      <div class="bg-white shadow-lg rounded-lg p-6 md:col-span-2">
+        <a href="https://ibb.co/mJpwvJ5" target="_blank">
+          <img src="https://i.ibb.co/98xD0QH/Chat-GPT-Image-Aug-2-2025-01-55-10-PM.png" alt="eBook 3" class="w-full h-auto rounded shadow-md">
+        </a>
+        <h2 class="text-2xl font-semibold mb-2">Elite Wealth & Investment Blueprint</h2>
+        <p class="mb-3 text-gray-600">An advanced premium guide on building long-term wealth, global investing, asset protection, and high-yield strategies used by top entrepreneurs.</p>
+        <p class="text-lg font-bold mb-2">₦50,000</p>
+        <div class="flex space-x-3">
+          <button onclick="openModal(50000, 'premium')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Buy Now</button>
+          <button onclick="showDetails('details3')" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Read More</button>
+        </div>
+        <p class="mt-4 text-sm text-gray-500">Your ebook will be sent to your email upon payment confirmation. If not received, contact: <a href="mailto:ojewoyegoddey.ogd@gmail.com" class="underline">ojewoyegoddey.ogd@gmail.com</a></p>
+      </div>
+
     </div>
   </div>
 
@@ -103,14 +119,13 @@
     </div>
   </div>
 
-  <!-- Read More Modals (unchanged) -->
+  <!-- Read More Modals -->
   <div id="details1" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg relative">
       <button onclick="hideDetails('details1')" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
       <h3 class="text-xl font-semibold mb-4">About The Ultimate Guide to Financial Freedom</h3>
       <p class="text-gray-700 text-sm leading-relaxed">
-        This comprehensive ebook will walk you through the foundations of building real wealth. Learn how to budget effectively, save consistently, invest wisely, and build passive income streams. Whether you're starting from zero or looking to optimize your finances, this guide has everything you need. <br><br>
-        You'll also find tools, apps, and Nigerian-specific strategies to grow your savings and multiply income. A must-read for young professionals, entrepreneurs, and anyone tired of living paycheck-to-paycheck.
+        This comprehensive ebook will walk you through the foundations of building real wealth. Learn how to budget effectively, save consistently, invest wisely, and build passive income streams. Whether you're starting from zero or looking to optimize your finances, this guide has everything you need.
       </p>
     </div>
   </div>
@@ -120,8 +135,18 @@
       <button onclick="hideDetails('details2')" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
       <h3 class="text-xl font-semibold mb-4">About Mastering Online Business in Nigeria</h3>
       <p class="text-gray-700 text-sm leading-relaxed">
-        Discover the blueprint to launch and scale a profitable online business in Nigeria using tools you already have. This ebook reveals tested techniques for leveraging social media, WhatsApp, e-commerce, affiliate marketing, and digital products to generate income online. <br><br>
-        Learn how to find winning niches, set up payment gateways, and attract your first 1,000 paying customers. Includes interviews with successful Nigerian online entrepreneurs and a list of useful platforms you can start using today.
+        Discover the blueprint to launch and scale a profitable online business in Nigeria using tools you already have. This ebook reveals tested techniques for leveraging social media, WhatsApp, e-commerce, affiliate marketing, and digital products to generate income online.
+      </p>
+    </div>
+  </div>
+
+  <!-- NEW DETAILS 3 -->
+  <div id="details3" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg relative">
+      <button onclick="hideDetails('details3')" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
+      <h3 class="text-xl font-semibold mb-4">About Elite Wealth & Investment Blueprint</h3>
+      <p class="text-gray-700 text-sm leading-relaxed">
+        This premium ebook offers high-level wealth-building secrets covering global investing, stock market mastery, real estate structuring, tax optimization, asset protection, offshore diversification, passive income systems, and long-term wealth strategies used by elite entrepreneurs around the world.
       </p>
     </div>
   </div>
@@ -150,7 +175,6 @@
     document.getElementById(id).classList.remove('flex');
   }
 
-  // Close modal btn event
   document.getElementById('closeModalBtn').addEventListener('click', closeModal);
 
   // Paystack Integration
@@ -176,9 +200,9 @@
       const lastName = lastParts.join(' ') || '';
 
       var handler = PaystackPop.setup({
-        key: 'pk_live_7bdfff0a3e6d516be08c6509d2a054533e504f5c', // Replace with your public key
+        key: 'pk_live_7bdfff0a3e6d516be08c6509d2a054533e504f5c',
         email: email,
-        amount: amount * 100, // convert to kobo
+        amount: amount * 100,
         currency: 'NGN',
         firstname: firstName,
         lastname: lastName,
@@ -193,7 +217,6 @@
         },
         callback: function(response) {
           alert('Payment successful! Reference: ' + response.reference);
-          // You can handle server-side verification here if needed
         },
         onClose: function() {
           alert('Payment cancelled.');
@@ -207,6 +230,3 @@
 
 </body>
 </html>
-
-
-
