@@ -6,19 +6,16 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <style>
-    /* Modal styling */
     #buyModal {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.5);
-      display: none; /* hidden by default */
+      display: none;
       justify-content: center;
       align-items: center;
       z-index: 1000;
     }
-    #buyModal.flex {
-      display: flex;
-    }
+    #buyModal.flex { display: flex; }
     #buyModal .modal-content {
       background: white;
       padding: 20px;
@@ -38,9 +35,7 @@
       background: none;
       color: #555;
     }
-    #buyModal .close-btn:hover {
-      color: #000;
-    }
+    #buyModal .close-btn:hover { color: #000; }
   </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
@@ -79,7 +74,7 @@
         <p class="mt-4 text-sm text-gray-500">Your ebook will be sent to your email upon payment confirmation. If not received, contact: <a href="mailto:ojewoyegoddey.ogd@gmail.com" class="underline">ojewoyegoddey.ogd@gmail.com</a></p>
       </div>
 
-      <!-- eBook 3 (NEW - ₦50,000) -->
+      <!-- eBook 3 -->
       <div class="bg-white shadow-lg rounded-lg p-6 md:col-span-2">
         <a href="https://ibb.co/mJpwvJ5" target="_blank">
           <img src="https://i.ibb.co/98xD0QH/Chat-GPT-Image-Aug-2-2025-01-55-10-PM.png" alt="eBook 3" class="w-full h-auto rounded shadow-md">
@@ -94,6 +89,40 @@
         <p class="mt-4 text-sm text-gray-500">Your ebook will be sent to your email upon payment confirmation. If not received, contact: <a href="mailto:ojewoyegoddey.ogd@gmail.com" class="underline">ojewoyegoddey.ogd@gmail.com</a></p>
       </div>
 
+      <!-- Course - ₦100,000 -->
+      <div class="bg-white shadow-lg rounded-lg p-6 md:col-span-2">
+        <a href="https://ibb.co/jFfQ93x" target="_blank">
+          <img src="https://i.ibb.co/jFfQ93x" alt="Advanced Trading Automation Course" class="w-full h-auto rounded shadow-md">
+        </a>
+        <h2 class="text-2xl font-semibold mb-2">Advanced Trading Automation & Strategy Program</h2>
+        <p class="mb-3 text-gray-600">An 8-week premium training program covering digital trading, strategy development, automation systems, and long-term wealth building used by elite traders.</p>
+        <p class="text-lg font-bold mb-2">₦100,000</p>
+        <div class="flex space-x-3">
+          <button onclick="openModal(100000, 'course')" class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700">Buy Now</button>
+          <button onclick="showDetails('details4')" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Read More</button>
+        </div>
+        <p class="mt-4 text-sm text-gray-500">Access details will be sent to your email upon payment confirmation. If not received, contact: <a href="mailto:ojewoyegoddey.ogd@gmail.com" class="underline">ojewoyegoddey.ogd@gmail.com</a></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Business Info Footer -->
+  <div class="bg-gray-900 text-white py-10 px-4 mt-12">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-semibold mb-4">Business Information</h2>
+      <p class="mb-2"><strong>Business Name:</strong> Booklyn Premium</p>
+      <p class="mb-2"><strong>Business Type:</strong> Digital Products & Online Training</p>
+      <p class="mb-2"><strong>Services:</strong> eBooks, Financial Education, Trading & Automation Training</p>
+      <p class="mb-2"><strong>Email:</strong> ojewoyegoddey.ogd@gmail.com</p>
+      <p class="mb-2"><strong>Delivery Method:</strong> Email & Private Training Groups</p>
+      <p class="mt-4 text-sm text-gray-400">All products are digital and delivered electronically. No physical goods are shipped.</p>
+
+      <!-- Footer Navigation -->
+      <div class="text-center mt-6 text-sm border-t border-gray-700 pt-6">
+        <a href="refund-policy.html" class="underline mx-2 text-gray-300 hover:text-white">Refund Policy</a>
+        <a href="terms.html" class="underline mx-2 text-gray-300 hover:text-white">Terms & Conditions</a>
+      </div>
     </div>
   </div>
 
@@ -105,7 +134,6 @@
       <form id="purchaseForm">
         <input type="hidden" id="amount" name="amount">
         <input type="hidden" id="plan" name="plan">
-
         <div class="mb-4">
           <label for="name" class="block mb-1 text-sm font-medium">Name</label>
           <input type="text" id="name" name="name" autocomplete="name" required class="w-full px-3 py-2 border border-gray-300 rounded">
@@ -119,11 +147,11 @@
     </div>
   </div>
 
-  <!-- Read More Modals -->
+  <!-- Details Modals -->
   <div id="details1" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg relative">
       <button onclick="hideDetails('details1')" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
-      <h3 class="text-xl font-semibold mb-4">About The Ultimate Guide to Financial Freedom</h3>
+      <h3 class="text-xl font-semibold mb-4">About Mastering Your Money Habits</h3>
       <p class="text-gray-700 text-sm leading-relaxed">
         This comprehensive ebook will walk you through the foundations of building real wealth. Learn how to budget effectively, save consistently, invest wisely, and build passive income streams. Whether you're starting from zero or looking to optimize your finances, this guide has everything you need.
       </p>
@@ -133,14 +161,13 @@
   <div id="details2" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg relative">
       <button onclick="hideDetails('details2')" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
-      <h3 class="text-xl font-semibold mb-4">About Mastering Online Business in Nigeria</h3>
+      <h3 class="text-xl font-semibold mb-4">About The Ultimate Guide to Financial Freedom</h3>
       <p class="text-gray-700 text-sm leading-relaxed">
         Discover the blueprint to launch and scale a profitable online business in Nigeria using tools you already have. This ebook reveals tested techniques for leveraging social media, WhatsApp, e-commerce, affiliate marketing, and digital products to generate income online.
       </p>
     </div>
   </div>
 
-  <!-- NEW DETAILS 3 -->
   <div id="details3" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg relative">
       <button onclick="hideDetails('details3')" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
@@ -151,83 +178,109 @@
     </div>
   </div>
 
-<script>
-  // Modal open/close functions
-  function openModal(amount, plan) {
-    document.getElementById('amount').value = amount;
-    document.getElementById('plan').value = plan;
-    document.getElementById('buyModal').classList.remove('hidden');
-    document.getElementById('buyModal').classList.add('flex');
-  }
+  <div id="details4" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg relative overflow-y-auto max-h-[90vh]">
+      <button onclick="hideDetails('details4')" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
+      <h3 class="text-xl font-semibold mb-4">Advanced Trading Automation & Strategy Program</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        This premium 8-week program is designed to equip you with the knowledge, systems, and strategies required to succeed in digital trading and automation. You will learn how to analyze markets, build profitable strategies, and implement automation tools effectively.
+      </p>
+      <h4 class="font-semibold mb-2">📚 Course Breakdown:</h4>
+      <ul class="text-sm text-gray-700 mb-4 list-disc pl-5 space-y-1">
+        <li><strong>Week 1–2:</strong> Digital trading fundamentals, risk management, and market structure</li>
+        <li><strong>Week 3–4:</strong> Strategy development and understanding price behavior</li>
+        <li><strong>Week 5–6:</strong> Introduction to automation systems and trading tools</li>
+        <li><strong>Week 7:</strong> Performance tracking and optimization techniques</li>
+        <li><strong>Week 8:</strong> Scaling strategies and long-term sustainability</li>
+      </ul>
+      <h4 class="font-semibold mb-2">🎁 What You Get:</h4>
+      <ul class="text-sm text-gray-700 mb-4 list-disc pl-5 space-y-1">
+        <li>Full 8-week structured training program</li>
+        <li>Access to private mentorship group (Telegram/Discord)</li>
+        <li>Strategy guides and downloadable resources</li>
+        <li>Automation system introduction and setup guidance</li>
+        <li>Lifetime access to course materials</li>
+      </ul>
+      <h4 class="font-semibold mb-2">📩 Delivery:</h4>
+      <p class="text-sm text-gray-700">
+        Upon successful payment, you will receive an email containing:<br>
+        • Course access details<br>
+        • Private training group link<br>
+        • All learning materials
+      </p>
+    </div>
+  </div>
 
-  function closeModal() {
-    document.getElementById('buyModal').classList.add('hidden');
-    document.getElementById('buyModal').classList.remove('flex');
-  }
+  <script>
+    function openModal(amount, plan) {
+      document.getElementById('amount').value = amount;
+      document.getElementById('plan').value = plan;
+      document.getElementById('buyModal').classList.remove('hidden');
+      document.getElementById('buyModal').classList.add('flex');
+    }
 
-  function showDetails(id) {
-    document.getElementById(id).classList.remove('hidden');
-    document.getElementById(id).classList.add('flex');
-  }
+    function closeModal() {
+      document.getElementById('buyModal').classList.add('hidden');
+      document.getElementById('buyModal').classList.remove('flex');
+    }
 
-  function hideDetails(id) {
-    document.getElementById(id).classList.add('hidden');
-    document.getElementById(id).classList.remove('flex');
-  }
+    function showDetails(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.getElementById(id).classList.add('flex');
+    }
 
-  document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+    function hideDetails(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.getElementById(id).classList.remove('flex');
+    }
 
-  // Paystack Integration
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("purchaseForm");
+    document.getElementById('closeModalBtn').addEventListener('click', closeModal);
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("purchaseForm");
 
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const amount = parseFloat(document.getElementById("amount").value);
-      const plan = document.getElementById("plan").value;
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-      if (!name || !email || !amount || !plan) {
-        alert("Please fill in all fields.");
-        return;
-      }
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const amount = parseFloat(document.getElementById("amount").value);
+        const plan = document.getElementById("plan").value;
 
-      closeModal();
-
-      const [firstName, ...lastParts] = name.split(' ');
-      const lastName = lastParts.join(' ') || '';
-
-      var handler = PaystackPop.setup({
-        key: 'pk_live_7bdfff0a3e6d516be08c6509d2a054533e504f5c',
-        email: email,
-        amount: amount * 100,
-        currency: 'NGN',
-        firstname: firstName,
-        lastname: lastName,
-        metadata: {
-          custom_fields: [
-            {
-              display_name: "Plan",
-              variable_name: "plan",
-              value: plan
-            }
-          ]
-        },
-        callback: function(response) {
-          alert('Payment successful! Reference: ' + response.reference);
-        },
-        onClose: function() {
-          alert('Payment cancelled.');
+        if (!name || !email || !amount || !plan) {
+          alert("Please fill in all fields.");
+          return;
         }
-      });
 
-      handler.openIframe();
+        closeModal();
+
+        const [firstName, ...lastParts] = name.split(' ');
+        const lastName = lastParts.join(' ') || '';
+
+        var handler = PaystackPop.setup({
+          key: 'pk_live_7bdfff0a3e6d516be08c6509d2a054533e504f5c',
+          email: email,
+          amount: amount * 100,
+          currency: 'NGN',
+          firstname: firstName,
+          lastname: lastName,
+          metadata: {
+            custom_fields: [
+              { display_name: "Plan", variable_name: "plan", value: plan }
+            ]
+          },
+          callback: function(response) {
+            alert('Payment successful! Reference: ' + response.reference);
+          },
+          onClose: function() {
+            alert('Payment cancelled.');
+          }
+        });
+
+        handler.openIframe();
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
-
